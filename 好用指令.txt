@@ -1,0 +1,7 @@
+pip freeze > requirments.txt  //生成虛擬環境中套件的列表
+
+pip install -r requirments,txt  // 快速套用別人環境套件需求
+
+git add (檔案)
+git commit "TXT"
+
