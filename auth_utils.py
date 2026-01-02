@@ -14,12 +14,12 @@ def create_access_token(data: dict):
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
-def get_current_user_email(token: str):
+#def get_current_user_email(token: str):
     # 解析 JWT 並回傳 email 的邏輯...
     pass
 
 
-#def get_current_user_email(token: str = Depends(oauth2_scheme)):
+def get_current_user_email(token: str = Depends(oauth2_scheme)):
     """Dependency: decode JWT and return the `sub` (email). Raises 401 on failure."""
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])

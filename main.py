@@ -1,11 +1,21 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from typing import Annotated
 from fastapi import FastAPI,Path , Body, Cookie, Form
 from pydantic import BaseModel, Field
 
 from fastapi import FastAPI, Depends, HTTPException, status
 from pydantic import BaseModel
-from .google_oauth import verify_google_id_token
-from .auth_utils import create_access_token, get_current_user_email
+from google_oauth import verify_google_id_token
+from auth_utils import create_access_token, get_current_user_email
+
+class TokenRequest(BaseModel):
+    id_token: str
+
+class CodeRequest(BaseModel):
+    code: str
+    redirect_uri: str
 
 
 class Item(BaseModel):
